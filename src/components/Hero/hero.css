@@ -1,0 +1,17 @@
+
+
+section{
+    display: flex;
+    margin-top: 70px;
+}
+
+section .img-comp{
+    width: 500px;
+    height: 500px;
+    margin-right: 20px;
+} 
+
+section .img-comp img{
+    width: 100%;
+}
+
