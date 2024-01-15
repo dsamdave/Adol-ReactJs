@@ -29,3 +29,31 @@ nav ul{
     width: 40%;
     
 }
+
+.k{
+    text-decoration: none;
+    border: 1px solid grey;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    color: grey;
+}
+
+.k:hover{
+    background-color: grey;
+    color: white;
+}
+
+.s{
+    text-decoration: none;
+    background-color: grey;
+    padding: 7px 10px;
+    border-radius: 7px;
+    color: white; 
+}
+
+.s:hover{
+    border: 1px solid grey;
+    background-color: transparent;
+    color: grey;
+}

@@ -1,50 +1,40 @@
-
-
-
 import { useEffect, useState } from "react"
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import CardComp from "./components/CardComp"
 import Footer from "./components/Footer/Footer"
 import HeroComp from "./components/Hero/Hero"
 import Navbar from "./components/Navbar/Navbar"
-
-
+import LoginPage from "./pages/LoginPage"
+import SignUpPage from "./pages/SignUpPage"
+import HomePage from "./pages/HomePage"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./components/alert/spinner.css"
 
 const App = () => {
-
-  const [products, setProducts] = useState(null)
-
-
-  const fetchUsers = async()=>{
-    // await fetch('https://jsonplaceholder.typicode.com/users')
-    await fetch('https://techtrove-tsly.onrender.com/api/all-products')
-      .then(response => response.json())
-      .then(result => setProducts(result?.products))
-  }
-
-
-  useEffect(()=>{
-    fetchUsers()
-  }, [])
-
-console.log({products})
 
 
   return (
     <>
+
+    <BrowserRouter>
         <Navbar />
-      <div style={{display: "flex", padding: "20px" }}>
 
+      <Routes>
 
-        <div style={{margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "20px"}}>
+        <Route path="/" element={<HomePage />} />
 
-          {
-            products && products.map((item, i)=> (
-              <CardComp item={item}/>
-            ))
-          }
-        </div>
+        <Route path="/login" element={<LoginPage/>} />
 
-      </div>
+        <Route path="/signup" element={<SignUpPage/>} />
+        
+      </Routes>
+
+      <ToastContainer />
+    <Footer />
+    </BrowserRouter>
+
     </>
   )
 }

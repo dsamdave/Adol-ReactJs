@@ -1,0 +1,17 @@
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 300px;
+}
+
+form{
+    margin: 0 auto;
+    width: 70%;
+    border: 1px solid grey;
+    padding: 75px 50px;
+    border-radius: 20px;
+}
