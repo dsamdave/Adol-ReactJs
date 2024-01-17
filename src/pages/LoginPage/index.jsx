@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import Spinner from "../../components/alert/Spinner";
+import { toast } from 'react-toastify'
+import { validateLogin } from "../../utils/validations";
+
 
 
 const LoginPage = ()=> { 
@@ -16,6 +19,13 @@ const LoginPage = ()=> {
     e.preventDefault();
     setLoading(true)
 
+    const errors = validateLogin(email, password)
+
+    if(errors.length > 0){
+      setLoading(false)
+      errors.map((each, i) => toast.error(each) )
+    }
+
     await fetch("https://atmospherenow.onrender.com/api/sign-in", {
       method: "POST",
       body: JSON.stringify({ email, password, }),
@@ -26,6 +36,8 @@ const LoginPage = ()=> {
       .then((response) => response.json())
       .then((result) => {
         setUser(result)
+        sessionStorage.setItem("accessToken", result?.accessToken)
+        localStorage.setItem("user", JSON.stringify(result?.user))
         setLoading(false)
     });
   };
@@ -33,7 +45,8 @@ const LoginPage = ()=> {
   useEffect(()=>{ 
 
     if(user?.accessToken){
-        navigate("/")
+
+        navigate("/profile")
     }
   }, [user])
 

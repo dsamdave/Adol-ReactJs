@@ -11,6 +11,8 @@ import HomePage from "./pages/HomePage"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./components/alert/spinner.css"
+import ProductDetailsPage from "./pages/Slug/[id]"
+import ProfilePage from "./pages/Profile"
 
 const App = () => {
 
@@ -23,11 +25,16 @@ const App = () => {
 
       <Routes>
 
-        <Route path="/" element={<HomePage />} />
+        <Route exact path="/" element={<HomePage />} />
 
         <Route path="/login" element={<LoginPage/>} />
 
         <Route path="/signup" element={<SignUpPage/>} />
+
+        <Route path="/product/:id" element={<ProductDetailsPage/>} />
+
+        <Route path="/profile" element={<ProfilePage/>} />
+        
         
       </Routes>
 
